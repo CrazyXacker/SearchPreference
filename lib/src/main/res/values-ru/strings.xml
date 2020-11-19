@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="searchpreference_search">Поиск...</string>
+    <string name="searchpreference_clear">Очистить</string>
+    <string name="searchpreference_history_entry">Запись истории</string>
+    <string name="searchpreference_more">Больше</string>
+    <string name="searchpreference_clear_history">Очистить историю</string>
+    <string name="searchpreference_no_results">Нет результатов</string>
+</resources>
