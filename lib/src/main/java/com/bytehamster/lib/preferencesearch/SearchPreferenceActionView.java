@@ -1,16 +1,16 @@
 package com.bytehamster.lib.preferencesearch;
 
+import android.app.FragmentManager;
 import android.content.Context;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
+import android.preference.PreferenceActivity;
 import android.util.AttributeSet;
-import android.view.View;
-import androidx.fragment.app.FragmentManager;
+
+import androidx.appcompat.widget.SearchView;
 
 public class SearchPreferenceActionView extends SearchView {
     private SearchPreferenceFragment searchFragment;
     private SearchConfiguration searchConfiguration = new SearchConfiguration();
-    private AppCompatActivity activity;
+    private PreferenceActivity activity;
 
     public SearchPreferenceActionView(Context context) {
         super(context);
@@ -88,13 +88,13 @@ public class SearchPreferenceActionView extends SearchView {
 
     private void removeFragment() {
         if (searchFragment.isVisible()) {
-            FragmentManager fm = activity.getSupportFragmentManager();
+            FragmentManager fm = activity.getFragmentManager();
             fm.beginTransaction().remove(searchFragment).commit();
             fm.popBackStack(SearchPreferenceFragment.NAME, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
     }
 
-    public void setActivity(AppCompatActivity activity) {
+    public void setActivity(PreferenceActivity activity) {
         searchConfiguration.setActivity(activity);
         this.activity = activity;
     }

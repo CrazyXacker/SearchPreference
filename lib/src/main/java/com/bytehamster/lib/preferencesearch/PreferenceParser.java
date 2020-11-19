@@ -3,8 +3,10 @@ package com.bytehamster.lib.preferencesearch;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayList;

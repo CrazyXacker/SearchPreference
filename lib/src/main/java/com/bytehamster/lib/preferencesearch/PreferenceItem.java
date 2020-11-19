@@ -1,6 +1,8 @@
 package com.bytehamster.lib.preferencesearch;
 
+import android.annotation.SuppressLint;
 import android.text.TextUtils;
+
 import org.apache.commons.text.similarity.FuzzyScore;
 
 import java.util.ArrayList;
@@ -8,7 +10,8 @@ import java.util.Locale;
 
 class PreferenceItem extends ListItem {
     static final int TYPE = 2;
-    private static FuzzyScore fuzzyScore = new FuzzyScore(Locale.getDefault());
+    @SuppressLint("ConstantLocale")
+    private static final FuzzyScore fuzzyScore = new FuzzyScore(Locale.getDefault());
 
     String title;
     String summary;

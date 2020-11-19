@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 import android.util.TypedValue;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.fragment.app.FragmentManager;
@@ -17,7 +18,6 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceGroup;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 public class SearchPreferenceResult {
     private final String key;

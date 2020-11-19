@@ -1,14 +1,17 @@
 package com.bytehamster.lib.preferencesearch;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 import androidx.annotation.XmlRes;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.bytehamster.lib.preferencesearch.ui.RevealAnimationSetting;
 
 import java.util.ArrayList;
@@ -29,7 +32,7 @@ public class SearchConfiguration {
     private boolean breadcrumbsEnabled = false;
     private boolean fuzzySearchEnabled = true;
     private boolean searchBarEnabled = true;
-    private AppCompatActivity activity;
+    private Activity activity;
     private int containerResId = android.R.id.content;
     private RevealAnimationSetting revealAnimationSetting = null;
     private String textClearHistory;
@@ -37,7 +40,6 @@ public class SearchConfiguration {
     private String textHint;
 
     SearchConfiguration() {
-
     }
 
     /**
@@ -60,7 +62,7 @@ public class SearchConfiguration {
         Bundle arguments = this.toBundle();
         SearchPreferenceFragment fragment = new SearchPreferenceFragment();
         fragment.setArguments(arguments);
-        activity.getSupportFragmentManager().beginTransaction()
+        activity.getFragmentManager().beginTransaction()
                 .add(containerResId, fragment, SearchPreferenceFragment.NAME)
                 .addToBackStack(SearchPreferenceFragment.NAME)
                 .commit();
@@ -99,7 +101,7 @@ public class SearchConfiguration {
      * Sets the current activity that also receives callbacks
      * @param activity The Activity that receives callbacks. Must implement SearchPreferenceResultListener.
      */
-    public void setActivity(@NonNull AppCompatActivity activity) {
+    public void setActivity(@NonNull Activity activity) {
         this.activity = activity;
         if (!(activity instanceof SearchPreferenceResultListener)) {
             throw new IllegalArgumentException("Activity must implement SearchPreferenceResultListener");

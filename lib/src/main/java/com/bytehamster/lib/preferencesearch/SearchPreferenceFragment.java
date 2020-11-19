@@ -1,5 +1,6 @@
 package com.bytehamster.lib.preferencesearch;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,19 +8,19 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bytehamster.lib.preferencesearch.ui.AnimationUtils;
 import com.bytehamster.lib.preferencesearch.ui.RevealAnimationSetting;
 
@@ -44,8 +45,8 @@ public class SearchPreferenceFragment extends Fragment implements SearchPreferen
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        prefs = getContext().getSharedPreferences(SHARED_PREFS_FILE, Context.MODE_PRIVATE);
-        searcher = new PreferenceParser(getContext());
+        prefs = getActivity().getSharedPreferences(SHARED_PREFS_FILE, Context.MODE_PRIVATE);
+        searcher = new PreferenceParser(getActivity());
 
         searchConfiguration = SearchConfiguration.fromBundle(getArguments());
         ArrayList<SearchConfiguration.SearchIndexItem> files = searchConfiguration.getFiles();
@@ -71,7 +72,7 @@ public class SearchPreferenceFragment extends Fragment implements SearchPreferen
             viewHolder.noResults.setText(searchConfiguration.getTextNoResults());
         }
         viewHolder.moreButton.setOnClickListener(v -> {
-            PopupMenu popup = new PopupMenu(getContext(), viewHolder.moreButton);
+            PopupMenu popup = new PopupMenu(getActivity(), viewHolder.moreButton);
             popup.getMenuInflater().inflate(R.menu.searchpreference_more, popup.getMenu());
             popup.setOnMenuItemClickListener(item -> {
                 if (item.getItemId() == R.id.clear_history) {
@@ -82,7 +83,7 @@ public class SearchPreferenceFragment extends Fragment implements SearchPreferen
             popup.show();
         });
 
-        viewHolder.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        viewHolder.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new SearchPreferenceAdapter();
         adapter.setSearchConfiguration(searchConfiguration);
         adapter.setOnItemClickListener(this);
@@ -100,7 +101,7 @@ public class SearchPreferenceFragment extends Fragment implements SearchPreferen
 
         RevealAnimationSetting anim = searchConfiguration.getRevealAnimationSetting();
         if (anim != null) {
-            AnimationUtils.registerCircularRevealAnimation(getContext(), rootView, anim);
+            AnimationUtils.registerCircularRevealAnimation(getActivity(), rootView, anim);
         }
 
         return rootView;

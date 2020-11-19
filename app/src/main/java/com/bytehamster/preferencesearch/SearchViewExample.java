@@ -55,7 +55,7 @@ public class SearchViewExample extends AppCompatActivity implements SearchPrefer
                 findViewById(android.R.id.content).getHeight(),
                 getResources().getColor(R.color.colorPrimary));
 
-        searchPreferenceActionView.setActivity(this);
+//        searchPreferenceActionView.setActivity(this);
 
         final MenuItem searchPreferenceMenuItem = menu.findItem(R.id.search);
         searchPreferenceMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {

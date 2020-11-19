@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,7 +16,6 @@ class SearchPreferenceAdapter extends RecyclerView.Adapter<SearchPreferenceAdapt
     private List<ListItem> dataset;
     private SearchConfiguration searchConfiguration;
     private SearchClickListener onItemClickListener;
-
 
     SearchPreferenceAdapter() {
         dataset = new ArrayList<>();
