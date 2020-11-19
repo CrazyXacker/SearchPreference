@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:clipToPadding="false"
+        android:layout_marginTop="@dimen/abc_action_bar_default_height_material"
         android:background="?android:attr/windowBackground">
 
     <include layout="@layout/searchpreference_searchbar"
